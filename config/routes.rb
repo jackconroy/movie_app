@@ -8,10 +8,13 @@ Rails.application.routes.draw do
   # end
 
   namespace :api do
-    get "/single_actor" => "actors#single_actor"
     
     get "/all_movies" => "movies#all_movies"
     get "/single_movie" => "movies#single_movie"
+
+    get "/actors/:id" => "actors#show"
+    get "/actors" => "actors#index"
+    post "/actors" => "actors#show_body"
     
   end
 end
