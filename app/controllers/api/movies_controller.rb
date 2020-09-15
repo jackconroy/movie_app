@@ -1,12 +1,37 @@
 class Api::MoviesController < ApplicationController
   
-  def all_movies
-    @all_movies = Movie.all
-    render "all_movies.json.jb"
+  def index
+    @movies = Movie.all 
+    render "movies_index.json.jb"
   end
 
-  def single_movie
-    @movie = Movie.find_by(id:4)
-    render "single_movie.json.jb"
-  end  
+  def show
+    @movie = Movie.find(params[:id])
+    render "movies_show.json.jb"
+  end
+
+  def create
+    @movie = Movie.new(
+      title: params[:title],
+      year: params[:year],
+      plot: params[:plot]
+    )
+    @movie.save
+    render "movies_show.json.jb"
+  end
+
+  def update
+    @movie = Movie.find(params[:id])
+    @movie.title = params[:title] || @movie.title
+    @movie.year = params[:year] || @movie.year
+    @movie.plot = params[:plot] || @movie.plot
+    @movie.save
+    render "movies_show.json.jb"
+  end
+
+  def destroy
+    @movie = Movie.find(params[:id])
+    @movie.destroy
+    render json: {message: "Movie has been deleted from the database."}
+  end
 end
