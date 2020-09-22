@@ -1,7 +1,7 @@
 class Api::MoviesController < ApplicationController
   
   def index
-    @movies = Movie.all.where(english: true)
+    @movies = Movie.all
     render "movies_index.json.jb"
   end
 
@@ -19,7 +19,7 @@ class Api::MoviesController < ApplicationController
       english: params[:english]
     )
     if @movie.save
-    render "movies_show.json.jb"
+      render "movies_show.json.jb"
     else
       render json: { errors: @movie.errors.full_messages }, status: :unprocessable_entity
     end
