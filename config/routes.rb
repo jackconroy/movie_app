@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     post "/users" => "users#create"
     post "/sessions" => "sessions#create"
 
-    post "/genre" => "genre#create"
+    post "/genres" => "genres#create"
 
   end
 end

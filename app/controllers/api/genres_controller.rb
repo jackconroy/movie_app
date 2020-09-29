@@ -1,5 +1,4 @@
-class Api::GenreController < ApplicationController
-
+class Api::GenresController < ApplicationController
   def create
     @genre = Genre.new(
       name: params[:name]
@@ -7,5 +6,4 @@ class Api::GenreController < ApplicationController
     @genre.save
     render json: { message: "Genre added!" } 
   end
-
 end
