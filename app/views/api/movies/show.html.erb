@@ -1,0 +1,9 @@
+<h1><%= @movie.title %></h1>
+<h2><%= @movie.year %></h2>
+<p><%= @movie.plot %></p>
+
+<form method="GET" action="/movies">
+  <label for="name">Rating:</label>
+  <input id="name" type="text" name="page_name" />
+  <input type="submit" value="Submit" />
+</form>
